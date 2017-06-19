@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../adom-card/adom-card.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="webcomponents-page-styles.html">
+<link rel="import" href="icons-webcomponents-page.html">
+
+<!--
+`webcomponents-page`
+webcomponents page is a page for ADominguez page
+
+@demo demo/index.html
+-->
+
+<dom-module id="webcomponents-page">
+  <style include="webcomponents-page-styles webcomponents-page-shared-styles"></style>
+  <template>
+    <div class="categories" hidden$="[[hideCategories]]">
+      <template is="dom-repeat" items="[[categories]]">
+        <button class="categories__item" on-tap="_setWebcomponents">
+          <adom-card
+            class="categories__item__card"
+            style$="border: 1px solid [[item.categoryColor]]"
+            heading="[[item.categoryName]]"
+            img-height="200"
+            img-url="[[item.categoryImgUrl]]"
+            no-header
+            no-footer>
+            <div class="card-body">
+              <div class="number-components">
+                <span class="number-components__number">[[_computeNumberOfComponents(item.webcomponents)]] componentes</span>
+              </div>
+              <p class="description">[[item.categoryDescription]]</p>
+            </div>
+          </adom-card>
+        </button>
+      </template>
+    </div>
+    <template is="dom-if" if="[[hideCategories]]">
+      <h2 class="nameSelected">[[selected]]</h2>
+    </template>
+    <div id="components" class="components" hidden$="[[!hideCategories]]">
+      <template is="dom-repeat" items="[[components]]" as="webcomponent">
+        <adom-card
+          class="components__card"
+          style$="border: 1px solid [[categoryColor]]"
+          heading="[[webcomponent.componentName]]"
+          img-url="[[webcomponent.componentImage]]"
+          img-height="200"
+          responsive
+          no-header
+          column>
+          <div class="card-body">
+            <p class="description">[[webcomponent.componentDescription]]</p>
+          </div>
+          <div class="card-footer">
+            <a href$="[[webcomponent.componentgithub]]" target="_blank" class="card-footer__button github">
+              <iron-icon class="card-footer__button__icon github" icon="webcomponents:github"></iron-icon>
+              <span class="card-footer__button__span">Github</span>
+            </a>
+            <a href$="[[webcomponent.componentdemo]]" class="card-footer__button demo">
+              <iron-icon class="card-footer__button__icon" icon="webcomponents:demo"></iron-icon>
+              <span class="card-footer__button__span">Demo</span>
+            </a>
+          </div>
+        </adom-card>
+      </template>
+    </div>
+
+
+  </template>
+  <script src="webcomponents-page.js"></script>
+</dom-module>
