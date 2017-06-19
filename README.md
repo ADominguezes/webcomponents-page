@@ -8,6 +8,12 @@ __Example__
 <webcomponents-page categories="[[categories]]"></webcomponents-page>
 ```
 
+It´s possible hide the initial categories using the property `hideCategories`. this show only the components
+
+```html
+<webcomponents-page categories="[[categories]]" hide-categories></webcomponents-page>
+```
+
 __Data Json__
 
 ```json

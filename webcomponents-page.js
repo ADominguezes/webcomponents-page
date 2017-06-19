@@ -5,25 +5,40 @@
     is: 'webcomponents-page',
 
     properties: {
+      /**
+       * Json for categories
+       */
       categories: {
         type: Array,
         value: function() {
           return [];
         },
       },
+      /**
+       * Json for components
+       */
       components: {
         type: Array,
         value: function() {
           return [];
         }
       },
+      /**
+       * show the name of selected category
+       */
       selected: {
         type: String
       },
+      /**
+       * Hide the initial categories, only show the components
+       */
       hideCategories: {
         type: Boolean,
         value: false
       },
+      /**
+       * this is the category color selected
+       */
       categoryColor: {
         type: String
       }
